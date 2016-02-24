@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<!-- Assignment : lab2.html -->
+<html>
+	<head>
+		<meta charset=“UTF-8”>
+		<title>Assignment Lab 2 Sunny Desai</title>
+		<script type="text/javascript">
+		var val1=0;
+		var val2=0;
+		var op;
+		var l;
+		var flag=0;
+		var errorFlag=0;//error flag to prevent the alert
+				//var studentIDField = document.getElementById("sid");
+		//var currentSIDtext = studentIDField.value; // how to read a text field
+	//	studentIDField.value = "123457890"; // how to write to a text field
+
+		// what does this return...?
+		// addDigitToNumber(12, 5);
+		
+		
+		//function to add decimal 
+		function addDigitToNumber(x,y)
+		{
+			var count = 0,z=0;
+			return (10*x)+y;
+		}
+		
+		//function when number 1 pressed
+		function numb1() {	
+			var displayfield =document.getElementById("display");
+			if(flag==0)
+			{
+				val1=addDigitToNumber(val1,1);
+				displayfield.value=val1;
+			}
+			else if(flag==1)
+			{
+				val2=addDigitToNumber(val2,1);
+				displayfield.value=val2;
+			}
+		}
+		
+		
+		//function when number 2 pressed
+		function numb2(){
+			var displayfield =document.getElementById("display");
+			if(flag==0)
+			{
+				val1=addDigitToNumber(val1,2);
+				displayfield.value=val1;
+			}
+			else if(flag==1)
+			{
+				val2=addDigitToNumber(val2,2);
+				displayfield.value=val2;
+			}
+		}
+		
+		
+		//function when number 3 pressed
+		function numb3(){
+			var displayfield =document.getElementById("display");
+			if(flag==0)
+			{
+				val1=addDigitToNumber(val1,3);
+				displayfield.value=val1;
+			}
+			else if(flag==1)
+			{
+				val2=addDigitToNumber(val2,3);
+				displayfield.value=val2;
+			}
+		}
+		
+		//function when add operator pressed
+		function ope1(){
+			var displayfield =document.getElementById("display");
+			val1=displayfield.value;
+			displayfield.value="";
+			op=1;
+			flag=1;
+			checkdigit(val1);
+			checkdigit(val2);
+		}
+		
+		//function when number 4 pressed
+		function numb4(){
+			var displayfield =document.getElementById("display");
+			if(flag==0)
+			{
+				val1=addDigitToNumber(val1,4);
+				displayfield.value=val1;
+			}
+			else if(flag==1)
+			{
+				val2=addDigitToNumber(val2,4);
+				displayfield.value=val2;
+			}
+		}
+		
+		//function when number 5 pressed
+		function numb5(){
+			var displayfield =document.getElementById("display");
+			if(flag==0)
+			{
+				val1=addDigitToNumber(val1,5);
+				displayfield.value=val1;
+			}
+			else if(flag==1)
+			{
+				val2=addDigitToNumber(val2,5);
+				displayfield.value=val2;
+			}
+		}
+		
+		//function when number 6 pressed
+		function numb6(){
+			var displayfield =document.getElementById("display");
+			if(flag==0)
+			{
+				val1=addDigitToNumber(val1,6);
+				displayfield.value=val1;
+			}
+			else if(flag==1)
+			{
+				val2=addDigitToNumber(val2,6);
+				displayfield.value=val2;
+			}
+		}
+		
+		//function when sub operator pressed
+		function ope2(){
+			var displayfield =document.getElementById("display");
+			val1=displayfield.value;
+			displayfield.value="";
+			op=2;
+			flag=1;
+			checkdigit(val1);
+			checkdigit(val2);
+		}
+		
+		//function when number 7 pressed
+		function numb7(){
+			var displayfield =document.getElementById("display");
+			if(flag==0)
+			{
+				val1=addDigitToNumber(val1,7);
+				displayfield.value=val1;
+			}
+			else if(flag==1)
+			{
+				val2=addDigitToNumber(val2,7);
+				displayfield.value=val2;
+			}
+		}
+		
+		//function when number 8 pressed
+		function numb8(){
+			var displayfield =document.getElementById("display");
+			if(flag==0)
+			{
+				val1=addDigitToNumber(val1,8);
+				displayfield.value=val1;
+			}
+			else if(flag==1)
+			{
+				val2=addDigitToNumber(val2,8);
+				displayfield.value=val2;
+			}
+		}
+		
+		//function when number 9 pressed
+		function numb9(){
+			var displayfield =document.getElementById("display");
+			if(flag==0)
+			{
+				val1=addDigitToNumber(val1,9);
+				displayfield.value=val1;
+			}
+			else if(flag==1)
+			{
+				val2=addDigitToNumber(val2,9);
+				displayfield.value=val2;
+			}
+		}
+		
+		//function when div operator pressed
+		function ope3(){
+			var displayfield =document.getElementById("display");
+			val1=displayfield.value;
+			displayfield.value="";
+			op=3;
+			flag=1;
+			checkdigit(val1);
+			checkdigit(val2);
+		}
+		
+		//function when clear button pressed
+		function bclear(){
+			var displayfield =document.getElementById("display");
+			displayfield.value="";
+			val1=0;
+			val2=0;
+			flag=0;
+			errorFlag=0;
+			document.getElementById("errorSave").innerHTML="";
+			
+		}
+		
+		//function when number 0 pressed
+		function numb0(){
+			var displayfield =document.getElementById("display");
+			if(flag==0)
+			{
+				val1=addDigitToNumber(val1,0);
+				displayfield.value=val1;
+			}
+			else if(flag==1)
+			{
+				val2=addDigitToNumber(val2,0);
+				displayfield.value=val2;
+			}
+		}
+		
+		//function when equal button pressed
+		function answer(){
+		
+		//console.log(val2);
+		//console.log(val1);
+		//console.log(val2);
+		var displayfield = document.getElementById("display");
+		val2=displayfield.value;
+		checkdigit(val1);
+		checkdigit(val2);
+		
+		if(errorFlag==0){
+			switch(op){
+				case 1:
+					ans=parseInt(val1) + parseInt(val2);
+					console.log(ans);
+					displayfield.value=ans;
+					break;
+		
+				case 2:
+					ans=parseInt(val1) - parseInt(val2);
+					displayfield.value=ans;
+					break;
+			
+				case 3:
+					ans=parseInt(val1)/parseInt(val2);
+					displayfield.value=ans;
+					break;
+				case 4:
+					ans=parseInt(val1) * parseInt(val2);
+					displayfield.value=ans;
+					break;
+			}
+		}
+		
+		}
+		
+		//function when mul operator pressed
+		function ope4(){
+			var displayfield =document.getElementById("display");
+			val1=displayfield.value;
+			displayfield.value="";
+			op=4;
+			flag=1;
+			checkdigit(val1);
+			checkdigit(val2);
+		}
+		
+		
+		//function of event listeners after the page loads 
+		function start(){
+			// register event handlers
+			document.getElementById("num1").addEventListener("click", numb1);
+			document.getElementById("num2").addEventListener("click", numb2);
+			document.getElementById("num3").addEventListener("click", numb3);
+			document.getElementById("num4").addEventListener("click", numb4);
+			document.getElementById("num5").addEventListener("click", numb5);
+			document.getElementById("num6").addEventListener("click", numb6);
+			document.getElementById("num7").addEventListener("click", numb7);
+			document.getElementById("num8").addEventListener("click", numb8);
+			document.getElementById("num9").addEventListener("click", numb9);
+			document.getElementById("num0").addEventListener("click", numb0);
+
+			document.getElementById("op1").addEventListener("click", ope1);
+			document.getElementById("op2").addEventListener("click", ope2);
+			document.getElementById("op3").addEventListener("click", ope3);
+			document.getElementById("op4").addEventListener("click", ope4);
+
+			document.getElementById("cclear").addEventListener("click", bclear);
+			document.getElementById("eqa").addEventListener("click", answer);
+			
+			document.getElementById("saveVal").addEventListener("click", save);
+			document.getElementById("submit").addEventListener("click", submit);
+		}
+		
+		//function to copy the value of calculator when save button pressed
+		function save(){
+			console.log("clicked");
+			saveFlag=0;
+			var displayfield = document.getElementById("display");
+			checkSave(displayfield.value);
+			var displayfield = document.getElementById("display");
+			var saveValue=displayfield.value;
+			
+			if(saveFlag==0){
+				document.getElementById("cout").innerHTML=parseInt(saveValue);
+				console.log("To display cout");
+			}
+			
+		}
+		var saveVal;
+		var saveFlag=0;
+		function checkSave(saveVal){
+		 	var tNum=saveVal.toString();
+		 	var numlength = tNum.length;
+		 	
+		 	if(numlength==0){
+		 		document.getElementById("errorSave").innerHTML="There is nothing to be saved from calculator";
+		 		errorFlag=1;
+		 		saveFlag=1;
+		 		document.getElementById("cout").innerHTML="";
+		 	}
+		 	else{
+		 		//for loop to check every element
+		 			for(var i=0; i<numlength;i++){
+						var tempNum = String(tNum).charCodeAt(i);
+						//if not in range set error
+						if((tempNum<48 || tempNum>57) && tempNum!=46){
+							//Write in proper format		
+							document.getElementById("errorSave").innerHTML="There is nothing to be saved";
+							errorFlag=1;
+							saveFlag=1;
+							document.getElementById("cout").innerHTML="";
+							break;
+						}
+					}	
+					saveFlag=0;
+					document.getElementById("errorSave").innerHTML="";
+		 	} 	
+		}
+		
+		//function to submit the information and validate data
+		function submit(){	
+			//checking the first name information
+			var firstnamefield = document.getElementById("firstname");
+			var firstnamevalue=firstnamefield.value;
+			console.log(firstnamevalue);
+			checkname(firstnamevalue);
+			
+			
+			
+			//checking the Last name information	
+			var lastnamefield = document.getElementById("lastname");
+			var lastnamevalue=lastnamefield.value;
+			checkname(lastnamevalue);
+			
+			//checking the student id information
+			var idfield = document.getElementById("sid");
+			var idvalue=idfield.value;
+			var idlength=idvalue.length;
+			var tempDig;
+			//to check if all are digits and exactly 9 digits
+			if(idlength==9){
+				for(var i=0; i<idlength;i++){
+				tempDig=idvalue.charCodeAt(i);
+					if(tempDig<48 || tempDig>57){
+						//Write in proper format
+						//enter exactly 9 digits	
+						//window.alert("Wrong format - No characters in id");
+						document.getElementById("errorSID").innerHTML="Wrong format - No characters in id";
+						errorFlag=1;
+						break;
+					}
+				}	
+			}	
+			else{
+				//enter exactly 9 digits
+				//window.alert("Wrong format - exactly 9 digits");
+				document.getElementById("errorSID").innerHTML="Wrong format - Enter exactly 9 digits in id";
+				errorFlag=1;
+			}
+			
+			//checking the biodata information
+			var biofield = document.getElementById("bio");
+			var biovalue=biofield.value;
+			var biolength=biovalue.length;
+			var sNum=0;
+				for(var i=0;i<biolength;i++){
+				var tempBio=biovalue.charCodeAt(i);
+					if(tempBio==32)
+						sNum++;
+				}
+				console.log(sNum);
+				//if length exceeded
+				if(sNum>25){
+					//window.alert("Wrong format - Length exceeded");
+					console.log("Inside the sNum>25");
+					errorFlag=1;
+					console.log("error" + errorFlag);
+					document.getElementById("errorBio").innerHTML="Wrong format - Length Exceeded";
+					
+				}
+				else{
+					console.log("Inside the sNum<=25");
+					document.getElementById("errorBio").innerHTML="";
+					errorflag=0;
+				}	
+			
+			
+			var outputvalue=document.getElementById("cout").innerHTML;
+			
+			//alert output which will summarize all
+				if(errorFlag==0){
+					document.getElementById("errorLName").innerHTML="";
+					document.getElementById("errorFName").innerHTML="";
+					document.getElementById("errorSID").innerHTML="";
+					document.getElementById("errorBio").innerHTML="";
+					document.getElementById("errorSave").innerHTML="";
+					
+					
+					alert("Name: " + firstnamevalue + " " + lastnamevalue + "\n" 
+						+ "Student ID: " + idvalue + "\n" 
+						+ "Biodata: " + biovalue + "\n" 
+						+ "Hours worked: " + outputvalue);
+				}
+		}
+		
+		 //function for checking the name
+		 var namevalue;
+		 function checkname(namevalue){
+		 	console.log("I am in check name");
+			for(var i=0;i<namevalue.length;i++){
+				var temp=namevalue.charCodeAt(i);
+				console.log("I am in for loop");
+				if(i==0)
+				{	if(temp < 65 || temp>90){
+					//window.alert("Wrong format");
+					//write first letter in upper case and according to format
+					//console.log("wrong format first letter");
+					document.getElementById("errorFName").innerHTML="Wrong format in first and/or last name";
+					document.getElementById("errorLName").innerHTML="first letter in Upper case and rest in lower case - Only letters ";
+					errorFlag=1;		
+					break;
+					}	
+				}
+				else if(i>0)
+				{
+					if(temp<97 || temp>122)
+					{
+					//write all letters in lower case except first letter
+					//window.alert("Wrong format");
+					document.getElementById("errorFName").innerHTML="Wrong format in first and/or last name";
+					document.getElementById("errorLName").innerHTML="first letter in Upper case and rest in lower case - Only letters ";
+					//write in proper format
+					//console.log("wrong format");
+					errorFlag=1;
+					break;
+					}
+					
+				}	
+				errorFlag=0;
+				document.getElementById("errorFName").innerHTML="";
+				document.getElementById("errorLName").innerHTML="";
+			}
+		 }
+		 
+		 
+
+			//function for checking digits
+		 var numbers;
+		 function checkdigit(numbers){	
+		 	var displayfield =document.getElementById("display");
+		 	var tNum=numbers.toString();
+		 	var numlength = tNum.length;
+		 	//console.log("Num length:" + numlength)
+		 	
+		 	//for loop to check every element
+		 	for(var i=0; i<numlength;i++){
+				var tempNum = String(tNum).charCodeAt(i);
+				//console.log("Ascii: " + tempNum + "real: " + tNum);
+				//if not in range set error
+				if((tempNum<48 || tempNum>57) && tempNum!=46){
+					//Write in proper format
+					//enter exactly 9 digits		
+					displayfield.value="ERROR press:C";
+					//console.log("Dispaly Field: " + displayfield.value);
+					errorFlag=1;
+					break;
+				}
+			}
+			errorFlag=0;
+			document.getElementById("errorFName").innerHTML="";	
+		 }
+		
+		//event listener when page loads
+		window.addEventListener("load", start);
+		</script>
+		
+		
+		
+		
+		<style type="text/css">
+		label { 
+				color: #191970; 
+				font-weight: bold;
+				display: block; 
+				
+				 
+				}
+		span{
+			color:#FF0000;
+			}
+		input[type=button]{
+				background-color: #000000;
+				color: #FFFFFF;
+				padding:3mm;
+				font-size:18px;
+				margin:2mm;
+				
+				}
+		input[type=submit]{
+				background-color: #000000;
+				color: #FFFFFF;
+				padding:3mm;
+				font-size:18px;
+				margin:2mm;
+				
+				}
+		input[type=reset]{
+				background-color: #000000;
+				color: #FFFFFF;
+				padding:3mm;
+				font-size:18px;
+				margin:2mm;
+				
+				}
+				
+		.outer{
+		margin:10mm;
+		
+		background:#E0E0E0;
+		
+		
+		}
+		span#cout{
+			color:blue;
+		}
+		.rightouter{
+		float:right;
+		
+	
+		background:#E6E6FA;
+		}
+		</style>
+	</head>
+	<body>
+	<div>
+		<div class="outer">
+		<form>
+			<label>First Name:<input type="text" id="firstname" name="fname" placeholder="Sunny"><span id="errorFName"></span></label><br>
+			<label>Last Name:<input type="text" id="lastname" name="lname" placeholder="Desai"><span id="errorLName"></span></label><br>
+			<label>Student ID:<input type="text" id="sid" name="sid" maxlength="9" placeholder="123456789"><span id="errorSID"></span></label><br>
+			<label>Bio:<textarea name="btarea" id="bio" placeholder="Max 25 words"></textarea><span id="errorBio"></span></label><br>
+			<label>Calculator:</label>
+			<input type="text" id="display" placeholder="calculate"><br><br>
+			<input type="button" id="num1" name="1" value="1" >
+			<input type="button" id="num2" name="2" value="2" >
+			<input type="button" id="num3" name="3" value="3" >
+			<input type="button" id="op1" name="1" value="+" ><br>
+			<input type="button" id="num4" name="1" value="4" >
+			<input type="button" id="num5" name="1" value="5" >
+			<input type="button" id="num6" name="1" value="6" >
+			<input type="button" id="op2" name="1" value="-" ><br>
+			<input type="button" id="num7" name="1" value="7" >
+			<input type="button" id="num8" name="1" value="8" >
+			<input type="button" id="num9" name="1" value="9" >
+			<input type="button" id="op3" name="1" value="/" ><br>
+			<input type="button" id="cclear" name="1" value="c" >
+			<input type="button" id="num0" name="1" value="0" >
+			<input type="button" id="eqa" name="1" value="=" >
+			<input type="button" id="op4" name="1" value="*" ><br>
+			<input type="button" id="saveVal" name="save" value="save" ><br>
+			<span><label>Hours worked this week:<span id ="cout"></span><span id="errorSave"></span></label></span>
+			<input type="button" id="submit" name="submit" value="Submit" >
+			
+		</form>
+		</div>
+		
+		
+	</div>
+	</body>
+</html>

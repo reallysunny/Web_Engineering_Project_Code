@@ -1,0 +1,65 @@
+body {
+background:blue;
+}
+
+div h1 h2{font-size:5em;
+color:yellow;}
+
+.title{
+margin:4mm;
+background:lightblue;
+text-align:right;
+padding: 1mm 10mm 1mm 1mm;
+border: 1px solid black;
+
+}
+.blog{
+background:magenta;
+width:70%;
+margin:5mm;
+margin-left:4mm;
+padding:3mm;
+text-align: justify;
+border: 3px solid black;
+}
+
+.image{
+float:right;
+padding: 1mm
+}
+
+.contacts{
+background:red;
+width:20%;
+float:right;
+margin: 2mm;
+padding:0mm 2mm 2mm 2mm;
+font-size:150%;
+border: 4px solid black;
+margin-right:4mm;
+margin-top:1mm;
+
+}
+
+.content{
+background:purple;
+border: 6px solid black;
+margin-left:5mm;margin-right:5mm;
+}
+
+h1 + h2{
+margin-top:-6mm;
+font-size:1.2em;
+}
+a:visited{
+color:blue;
+}
+
+div#contacts a:hover{  
+color:white;}
+
+
+html body div div * :hover {
+color:yellow;
+}
+

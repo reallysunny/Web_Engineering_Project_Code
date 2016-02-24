@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+    	h1   { text-align:center }
+  		html { height: 100% }
+	    body { height: 100%; margin: 0; padding: 0 }
+  		#map-canvas { height: 80% }
+  		#quiz{height:10%; text-align:center;}
+  		#checkAns{:10%; text-align:center;}
+  		body {
+         overflow:hidden;
+       }
+       *{font-weight: bold;
+        font-size:24px;}
+	</style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?sensor=false">
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript">
+
+	var map;
+	//array for list of questions
+	var ques=["Where is the Live Oak Hall? Locate it on map.","Where is the Magnolia Hall? Locate it on map.","Where is the Eucalyptus Hall? Locate it on map.","Where is the Jerome Richfield Hall? Locate it on map."];
+	var flagColor=1;
+	var N,S,E,W;//co-ordinates
+	var caseNum=0, ansNum=0;
+	
+	function doubleClicked(e)
+	{	
+	
+		var x=e.latLng.lat();
+		var y=e.latLng.lng();
+
+		caseNum++;		
+		//switch case for the flow of questions one by one
+			switch(caseNum){
+				
+				case 1:
+					//document.getElementById("quiz").innerHTML=ques[caseNum-1];
+					N=34.238440700728326;
+					E=-118.53003384545445;
+					W=-118.5313749499619;
+					S=34.238112526223325;
+						//validate the answer
+						if(x>N || x<S || y<W || y>E )
+							flagColor=0;
+						else
+							flagColor=1;
+						//calling drawRect function
+						drawRect(N,S,E,W,flagColor);
+						break;
+			
+				case 2:
+					//document.getElementById("quiz").innerHTML=ques[caseNum-1];
+					N=34.23839635289699;
+					E=-118.52764131501317;
+					W=-118.5288000293076;
+					S=34.23817461338996;
+						//validate the answer
+						if(x>N || x<S || y<W || y>E )
+							flagColor=0;
+						else
+							flagColor=1;
+						//calling drawRect function
+						drawRect(N,S,E,W,flagColor);
+						break;
+					
+				case 3:
+					//document.getElementById("quiz").innerHTML=ques[caseNum-1];
+					N=34.23965582221704;
+					E=-118.52813484147191;
+					W=-118.52841379120946;
+					S=34.23918574080153;
+						//validate the answer
+						if(x>N || x<S || y<W || y>E )
+							flagColor=0;
+						else
+							flagColor=1;
+						//calling drawRect function
+						drawRect(N,S,E,W,flagColor);
+						break;
+			
+				case 4:
+					
+					N=34.23875113489346;
+					E=-118.52763058617711;
+					W=-118.52881075814366;
+					S=34.238564874531754;
+						//validate the answer
+						if(x>N || x<S || y<W || y>E )
+							flagColor=0;
+						else
+							flagColor=1;
+						//calling drawRect function
+						drawRect(N,S,E,W,flagColor);
+						break;
+			
+				case 5:
+					//document.getElementById("quiz").innerHTML=ques[caseNum-1];
+					N=34.2390615679139;
+					E=-118.53035571053624;
+					W=-118.53093506768346;
+					S=34.23868904815201;
+						//validate the answer
+						if(x>N || x<S || y<W || y>E )
+							flagColor=0;
+						else
+							flagColor=1;
+						//calling drawRect function
+						drawRect(N,S,E,W,flagColor);
+						break;
+			
+				case 6:
+					document.getElementById("quiz").innerHTML="You got " + ansNum + " correct answers out of 5" ;
+					var anim=$( "#quiz" );
+					//anim.animate({left: "+=100px"}, "slow");
+        			//anim.animate({fontSize: '3em'}, "slow");
+        			//anim.animate({fontSize: '24px'}, "slow");
+        			//anim.animate({bottom: "0"},"slow");
+        			//anim.animate({bottom: "+=1000px"},"slow");
+					//anim.animate({top: "0"},"slow");
+					anim.animate({top: "600px"},1000);      			
+        			setTimeout(function(){ anim.animate({top: "0px"},1000); }, 1500);    
+					
+					rectangle.setMap(null);
+					document.getElementById("checkAns").innerHTML="";
+					break;
+			}
+			
+		
+  	
+  	}
+	
+	
+	var a,b,c,d,f;
+	var rectangle = new google.maps.Rectangle();
+	
+	//to draw the rectangles
+	function drawRect(a,b,c,d,f)
+	{	
+		var color;
+		//to set color and letting know the answer to user for right and wrong answer
+		if(f==1)
+		{	ansNum++;
+			color='#00FF00';
+			document.getElementById("checkAns").innerHTML=caseNum + ". Your answer is Correct";
+			question();
+		}
+		else
+		{
+			color='#FF0000';
+			document.getElementById("checkAns").innerHTML=caseNum + ". Your answer is wrong";
+			question();
+		}
+		
+		//to remove the last drawn rectangle	
+		rectangle.setMap(null);
+		
+		var num;
+		//to diaplay question
+		function question(){
+			if(caseNum>4)
+				document.getElementById("quiz").innerHTML="Double click to get answers:";
+			else
+				document.getElementById("quiz").innerHTML=ques[caseNum-1];
+		}
+		
+		//to set options of the rectangle
+		rectangle.setOptions({
+   	 		strokeColor: color,
+    		strokeOpacity: 0.8,
+    		strokeWeight: 2,
+    		fillOpacity: 0,
+    		map: map,
+    			bounds: {
+      			north: a,
+      			south: b,
+      			east: c,
+      			west: d
+   			 	}
+  			});
+	}
+	
+
+    function init()
+    {
+    	var mapOptions = {
+		    zoom: 17,
+		    center: new google.maps.LatLng(34.239192, -118.527769),
+		    mapTypeId: google.maps.MapTypeId.ROADMAP,
+			disableDoubleClickZoom: true,
+			disableDefaultUI: true,
+			zoomControl: false,
+			draggable: false,
+			scrollwheel: false,
+    		navigationControl: false,
+    		mapTypeControl: false,
+    		scaleControl: false,
+    		draggable: false,
+    		
+	    }
+	  	map = new google.maps.Map(document.getElementById("map-canvas"), 
+	  							mapOptions);
+		google.maps.event.addListener(map, 'dblclick', doubleClicked);
+    }
+    
+	window.addEventListener("DOMContentLoaded", init, false); 
+    </script>
+  </head>
+  
+  	<body>
+  
+  		<div id="quiz" style="margin:1mm;position:relative;z-index:99">Lets us Start Quiz: 		<br> First Question: Where is the Sierra Hall?</div>
+  		<div id="checkAns" style="margin:1mm;"></div>
+  		<div id="map-canvas" style="margin:5mm;"></div>
+ 
+		<div id="final_answer"></div>
+  	</body>
+</html>
