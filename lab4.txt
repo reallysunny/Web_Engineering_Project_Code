@@ -1,0 +1,27 @@
+Functionalities:
+According to the requirements of the lab 4 , the user will register with username and password. After signing in, enter details to send messages automatically with date and time. This project contains files for registering the user, letting the user log in and the scheduling an event to  the message. All the minimum requirements are fulfilled. The web application works well including the mailer.php which sends the mails which needs to be mailed with the message. There is no known bug which can create problem. But in some instances all possibilities are not included, in a way if there is an error the page should be redirected to same page or should show error in particular.
+Files Information:
+mailer.php:
+- The mailer.php will be executed after every half hour with the cron job. The script uses a ready mailer code, which fetches records from the database. The fetch will based on the values of the sent column and timestamp column. After fetching the rows, it will send the emails with assigned messages.
+
+login.php:
+- This page takes the user credentials and then matches it with the database. and starts a session for the current user. After that user will be redirected to the lab4.php page. Which will have the logic for lodging  email, the time details and message to be sent in the database.
+
+register.php:
+-This page helps the new user to register with username and password. If the user exists it will not allow the user to register with the same username.
+
+lab4.php:
+-This php file has the functionality to insert a message with a valid email address and message with date and time.
+
+lab4.mysql:
+- This is the dump file of the database. This includes all the information in the database.
+
+Extra Credit part:
+A. Adding hashed password to the database:
+  -> For converting the user's password to hash. The password_hash() function creates a new password hash using a strong one-way hashing algorithm, which will be stored in the database.
+
+B. Password Strength Validation:
+  -> for password strength validation the regular expression is used. Which satisfies minimum requirements as required like minimum 8 characters including at least one upper, one lower case characters and also one special character.
+
+C. SQL vulnerability.
+  -> for avoiding the SQL vulnerability, htmlspecialchars(); is used. This function will convert any special character into the html characters so, this helps in to tackle any direct attack which can be made by entering false queries.
